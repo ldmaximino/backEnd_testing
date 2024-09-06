@@ -1,0 +1,19 @@
+<div class="register-login-container">
+    <h1 class="register-login-title">User Login</h1>
+
+    <form action="/users/login" method="post">
+        <label for="email" class="label-user">Email</label>
+        <input type="text" name="email" id="email" required class="input-user">
+        <label for="password" class="label-user">Password</label>
+        <input type="password" name="password" id="password" required class="input-user">
+        <input type="submit" value="Login" class="btn-register-login">
+    </form>
+
+    <div class="login-github">
+        <button class="btn-login-github" onclick="location.href='/users/register-github'">Github Login</button>
+    </div>
+    <div class="new-user">
+        <button class="btn-register-login" onclick="location.href='/register'">New Account</button>
+    </div>
+</div>
+<script src="index.js" charset="utf-8"></script>

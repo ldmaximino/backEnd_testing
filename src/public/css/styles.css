@@ -1,0 +1,265 @@
+
+.products-container {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.title-products {
+    font-size:2rem;
+    font-weight: bold;
+    color:rgb(238, 8, 8);
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin:20px 40px;
+}
+
+.subtitle {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout {
+    font-size:1.2rem;
+    font-weight: bold;
+    margin-right:20px;
+    color:white;
+    background-color: rgb(11, 14, 230);
+    padding:8px;
+    border:2px solid rgb(11, 178, 5);
+    border-radius:10px;
+}
+
+.logout:hover {
+    cursor:pointer;
+    color:rgb(11, 14, 230);
+    background-color: white;
+}
+
+.user-data {
+    font-size:1.3rem;
+    color:#d64d09;
+    margin-left: 20px;
+}
+
+.product-card {
+    width: 300px;
+    height: 250px;
+    background-color: rgb(233, 233, 224);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.title {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.category {
+    font-size: 14px;
+    color: #777;
+}
+
+.description {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.stock {
+    font-size: 14px;
+    font-weight: bold;
+    color: #3f3a3a;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ee2d17;
+    margin-top: 10px;
+}
+
+.add-to-cart {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+}
+
+/* Register Form */
+.register-login-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Styles for the form */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* Styles for the form title */
+.register-login-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for the labels */
+.label-user {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+    display: block;
+    font-weight: bold;
+    background-color:  #fff;
+}
+
+/* Styles for the inputs */
+.input-user {
+    width: calc(100%);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Styles for the github login */
+.btn-login-github {
+    background-color: #080a0c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn-login-github:hover {
+    background-color: #777;
+}
+
+/* Styles for the register button */
+.btn-register-login {
+    background-color: #0f429b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn-register-login:hover {
+    background-color: #052b6d;
+}
+
+/* New User */
+.new-user {
+    width:200px;
+    text-align: center;
+    margin-top:50px;
+}
+
+/* Login */
+.error-login {
+    margin-top:100px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-login button {
+    width:150px;
+    background-color: #052b6d;
+}
+
+/* Cart */
+.cart-container {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto; 
+  }
+  
+  .title-cart {
+    font-size:2rem;
+    font-weight: bold;
+    color:rgb(238, 8, 8);
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin:10px 40px;
+  }
+  
+  .items-cart {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #9ece68;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .items-cart p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    background-color: #9ece68;
+    margin: 5px 0; 
+  }
+  
+  .total-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }

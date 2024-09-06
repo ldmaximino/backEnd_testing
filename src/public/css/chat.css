@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(233, 233, 224);
+}
+
+ body{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.chat-title{
+    text-align: center;
+    color:#1ed106;
+    margin:5px 20px;
+}
+#chat-container{
+    max-width: 700px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, .5);
+}
+#chat-window{
+    padding: 12px 0; 
+    margin: 0 10px;
+    border-bottom: 1px solid #e9e9e9;
+    color: #555;
+}
+#output p{
+    color: #aaa;
+    padding: 8px 0;
+    margin: 0 20px;
+    font-size:0.8rem;
+}
+#actions p{
+    padding: 10px;
+    margin: 0 10px;
+    border-bottom: 1px solid #e9e9e9;
+    text-align: center;
+    font-size:0.7rem;
+    color: rgb(23, 113, 19);
+}
+input{
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 0;
+    background: #bdaaaa;
+    display: block;
+    width: 100%;
+    font-size:0.8rem;
+}
+button{
+    background: #66d857;
+    color: #fff;
+    font-size: 19px;
+    border: 1px solid green;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+    cursor: pointer;
+}
+button:hover{
+    background: #1ed106;
+}
+

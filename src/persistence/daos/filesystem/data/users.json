@@ -1,0 +1,11 @@
+[
+    {
+        "id": "03041547-c074-440b-80b8-8b5dfb15f676",
+        "first_name": "Leandro",
+        "last_name": "Maximino",
+        "email": "leandro@gmail.com",
+        "password": "$2b$08$rpF.P5mXAgto7M2W4UbdVOB.l0R77RD5LCmBy.iHMRPFuFHRmRog.",
+        "role": "admin",
+        "cart": "9187b834-627e-4a8a-9147-3bffd2f41f89"
+    }
+]

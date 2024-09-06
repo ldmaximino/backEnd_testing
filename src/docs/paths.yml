@@ -1,0 +1,396 @@
+paths:
+  /users/register:
+    post:
+      tags: 
+      - Users
+      summary: Registro de usuario  
+      parameters:
+        - in: header
+          name: x-requested-from
+          value: swagger
+          schema:
+            type: string
+          required: false
+          description: "Indica el origen de la solicitud"
+      requestBody:  
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/parameters/schemas/User'
+        required: true
+      responses:  
+        200:
+          description: Register success
+          content: 
+            application/json:
+              schema: 
+                $ref: '#/components/schema/User'
+        201:
+          description: User Fields Errors
+          content: 
+            application/json:
+              schema: 
+                $ref: '#/components/schema/UserFieldsErrors'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+  /users/login:
+    post:
+      tags: 
+      - Users
+      summary: Login de usuario  
+      parameters:
+        - in: header
+          name: x-requested-from
+          value: swagger
+          schema:
+            type: string
+          required: false
+          description: "Indica el origen de la solicitud"
+      requestBody:  
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/parameters/schemas/login'
+        required: true
+      responses:  
+        200:
+          description: Login success
+          content: 
+            application/json:
+              schema: 
+                $ref: '#/components/schema/login'
+        404:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/UserNotFound'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+  /api/sessions/current:
+    get:
+      tags:
+      - Users
+      summary: Perfil del usuario autenticado
+      responses:
+        200:
+          description: Datos del usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/profile'
+        404:
+          description: User Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/UserNotFound'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+  /api/products:
+    post:
+      tags:
+      - Products
+      summary: Registro de Producto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/parameters/schemas/Products'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/Product'
+        401:
+          description: Product already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/ProductUnauth'
+        403:
+          description: User privileges
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/RolePrivileges'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+    get:
+      tags:
+      - Products
+      summary: Lista de Productos
+      responses:
+        200: 
+          description: Lista de productos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/GetAllProducts'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'  
+  /api/products/{id}:
+    get:
+      tags:
+      - Products
+      summary: Buscar producto por id.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id referente al producto
+          schema:
+            type: string
+      responses:
+        200:
+          description: producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/Product'
+        404:
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/ProductNotFound'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+    put:
+      tags:
+      - Products
+      summary: Editar producto
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id referente al producto
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/parameters/schemas/Products'
+        required: true
+      responses:
+        200:
+          description: producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/Product'
+        403:
+          description: User privileges
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/RolePrivileges'
+        404:
+          description: producto no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/ProductNotFound'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+    delete:
+      tags:
+      - Products
+      summary: Eliminar producto
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id referente al producto
+          schema:
+            type: string
+      responses:
+        200:
+          description: producto eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/Product'
+        403:
+          description: User privileges
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/RolePrivileges'
+        404:
+          description: producto no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Products/ProductNotFound'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+/api/carts:
+    post:
+      tags:
+      - Carts
+      summary: Registro de Carrito Vacío
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/parameters/schemas/Carts'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Carts/Cart'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+    get:
+      tags:
+      - Carts
+      summary: Lista de Carritos
+      responses:
+        200: 
+          description: Lista de carritos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Carts/GetAllCarts'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+/api/carts/cart:
+  get:
+    tags:
+    - Carts
+    summary: Buscar carrito por id.
+    responses:
+      200:
+        description: carrito encontrado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schema/Carts/Cart'
+      404:
+        description: Cart not found
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schema/Carts/CartNotFound'
+      500: 
+        description: Error del servidor.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schema/InternalServerError'
+/api/carts/product/{id}:
+  get:
+      tags:
+      - Carts
+      summary: Agregar producto al carrito
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id referente al producto
+          schema:
+            type: string
+      responses:
+        200:
+          description: Product added to cart
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Carts/Cart'
+        404:
+          description: Cart not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Carts/CartNotFound'
+        500: 
+          description: Error del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/InternalServerError'
+  put:
+    tags:
+    - Carts
+    summary: Actualizar cantidad del producto en el carrito
+    parameters:
+      - in: path
+        name: id
+        required: true
+        description: id referente al producto
+        schema:
+          type: string
+    responses:
+      200:
+        description: Cantidad Actualizada
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schema/Carts/Cart'
+  delete:
+    tags:
+    - Carts
+    summary: Eliminar producto del carrito
+    parameters:
+      - in: path
+        name: id
+        required: true
+        description: id referente al producto
+        schema:
+          type: string
+    responses:
+      200:
+        description: Producto borrado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schema/Carts/Cart'
+      

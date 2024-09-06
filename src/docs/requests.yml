@@ -1,0 +1,114 @@
+components:
+  parameters:
+    schemas:
+      User:
+        type: object
+        required:
+          - first_name
+          - last_name
+          - email
+          - password
+        properties:
+          first_name:
+            type: string
+            description: first_name
+            example: Leandro Daniel
+          last_name:
+            type: string
+            description: last_name
+            example: Maximino
+          email:
+            type: string
+            description: email address
+            example: leandro@gmail.com
+          password:
+            type: string
+            description: password
+            example: a1234
+          role:
+            type: string
+            description: user role
+            example: admin
+      login: 
+        type: object
+        required:   
+          - email
+          - password
+        properties:  
+          email:
+            type: string
+            description: Email del usuario 
+          password:
+            type: string
+            description: Password del usuario
+        example:
+          email: leandro@gmail.com
+          password: a1234
+      Products:
+        type: object
+        required:
+          - title
+          - description
+          - code
+          - price
+          - status
+          - stock
+          - category
+          - thumbnails
+          - owner
+        properties:
+          title:
+            type: string
+            description: Título del producto
+            example: Heladera Whirlpool WRM5602 c/Freezer 462L
+          description:
+            type: string
+            description: Descripción del producto
+            example: Heladera inverter no frost Whirlpool WRM56D2 blanca con freezer 462L 220V
+          code:
+            type: string
+            description: Código del producto
+            example: HWH5602
+          price:
+            type: number
+            description: Precio del producto
+            example: 1500
+          status:
+            type: boolean
+            description: Estado del producto (true or false)
+            example: true
+          stock:
+            type: number
+            description: Cantidad en stock del producto
+            example: 20
+          category:
+            type: string
+            description: Categoría del producto
+            example: Heladera
+          thumbnails:
+            type: array
+            description: URL de imágenes del producto
+            example: https://storeimages/image01.jpg
+          owner:
+            type: string
+            description: EMail del Usuario creador del producto(si es un usuario con rol = premium) o los valores fijos 'admin' o 'user'
+            example: admin
+      Carts:
+        type: object
+        required:
+          - products
+            - quantity
+            - product
+        properties:
+          products:
+            type: array
+            description: Array de Productos
+            example: []
+            quantity:
+              type: number
+              description: cantidad del producto
+              example: 2
+            product:
+              type: string
+              description: Id del producto
+              example: 66cfabf91cfadd37f5025104     

@@ -1,0 +1,354 @@
+components:
+  schema:
+    User:
+      type: object
+      properties: 
+        status:
+          type: number
+          description: Código de estado de la petición
+        message:
+          type: string
+          description: Estado de la petición
+        data:
+          type: string
+          description: Token del usuario autenticado
+      example:
+        status: 200
+        message: Success
+        data: 'User created'
+    login:
+      type: object
+      properties:
+        status:
+          type: number
+          description: Código de estado de la petición
+        message:
+          type: string
+          description: Estado de la petición
+        data:
+          type: object
+          description: Datos del usuario autenticado
+      example:
+        status: 200
+        message: Success
+        data: 
+          _id: 66d482d3d0be726a804c1295
+          first_name: Leandro
+          last_name: Maximino
+          email: leandro@gmail.com
+          password: $2b$08$lpgkvdlvJRvKgkULlPpVReKBmRVSZIYlO1oxmg6/LXbb98s5BSYV
+          role: user
+          isGithub: false,
+          cart: 66a95a9a43c4a70729672a50
+    profile:
+      type: object
+      properties:
+        status:
+          type: number
+          description: Código de estado de la petición
+        message:
+          type: string
+          description: Estado de la petición
+        data:
+          type: object
+          description: Datos del usuario autenticado
+      example:
+        status: 200
+        message: Success
+        data: 
+          first_name: Leandro
+          last_name: Maximino
+          email: leandro@gmail.com
+          role: user
+          cart: 
+            _id: 66a95a9a43c4a70729672a50
+            products: []
+    UserFieldsErrors:
+      type: object
+      properties:
+        status:
+          type: number
+          description: Código de estado de la petición
+        message:
+          type: string
+          description: Estado de la petición
+        data:
+          type: object
+          description: Información sobre los campos requeridos
+      example:
+        status: 201
+        message: User Fields Errors
+        data: 
+          ["The first_name field is required",
+           "The last_name field is required",
+           "The email field is required",
+           "The password field is required"]
+    UserNotFound:
+      type: object
+      properties:
+        status:
+          type: number
+          description: Código de estado de la petición
+        message:
+          type: string
+          description: Estado de la petición
+        data:
+          type: string
+          description: User Not Found
+      example:
+        status: 404
+        message: Not Found
+        data: User not exists
+    Products:
+      Product:
+        type: object
+        properties:
+          id:
+            type: string
+            description: ID del producto
+          title:
+            type: string
+            description: Título del producto
+          description:
+            type: string
+            description: Descripción del producto
+          code:
+            type: string
+            description: Código del producto
+          price:
+            type: number
+            description: Precio del producto
+          status:
+            type: boolean
+            description: Estado del producto (true or false)
+          stock:
+            type: number
+            description: Cantidad en stock del producto
+          category:
+            type: string
+            description: Categoría del producto
+          thumbnails:
+            type: array
+            description: URL de imágenes del producto
+          owner:
+            type: string
+            description: EMail del Usuario creador del producto(si es un usuario con rol = premium) o los valores fijos 'admin' o 'user'
+        example:
+          id: 66cfabf91cfadd37f5025104
+          title: Heladera Whirlpool WRM5602 c/Freezer 462L
+          description: Heladera inverter no frost Whirlpool WRM56D2 blanca con freezer 462L 220V
+          code: HWH5602
+          price: 1500
+          status: true
+          stock: 20
+          category: Heladera
+          thumbnails: https://storeimages/image01.jpg
+          owner: admin
+      GetAllProducts:
+        type: array
+        items:
+          properties:    
+            id:
+              type: string
+              description: ID del producto
+            title:
+              type: string
+              description: Título del producto
+            description:
+              type: string
+              description: Descripción del producto
+            code:
+              type: string
+              description: Código del producto
+            price:
+              type: number
+              description: Precio del producto
+            status:
+              type: boolean
+              description: Estado del producto (true or false)
+            stock:
+              type: number
+              description: Cantidad en stock del producto
+            category:
+              type: string
+              description: Categoría del producto
+            thumbnails:
+              type: array
+              description: URL de imágenes del producto
+            owner:
+              type: string
+              description: EMail del Usuario creador del producto(si es un usuario con rol = premium) o los valores fijos 'admin' o 'user'
+        example:
+            id: 66cfabf91cfadd37f5025104
+            title: Heladera Whirlpool WRM5602 c/Freezer 462L
+            description: Heladera inverter no frost Whirlpool WRM56D2 blanca con freezer 462L 220V
+            code: HWH5602
+            price: 1500
+            status: true
+            stock: 20
+            category: Heladera
+            thumbnails: https://storeimages/image01.jpg
+            owner: admin
+      ErrorGetById:
+        type: object
+        properties:
+          message:
+            type: string
+            description: No se encontró el id en la base de datos   
+        example:
+          message: No se encontró el id 66cfabf91cfadd37f5025104 en la base de datos
+      ProductNotFound:
+        type: object
+        properties:
+          status:
+            type: number
+            description: Código de estado de la petición
+          message:
+            type: string
+            description: Estado de la petición
+          data:
+            type: string
+            description: User Not Found
+        example:
+          status: 404
+          message: Not Found
+          error: null
+      ProductUnauth:
+        type: object
+        properties:
+          status:
+            type: number
+            description: Código de estado de la petición
+          message:
+            type: string
+            description: Estado de la petición
+          data:
+            type: string
+            description: Product already exists
+        example:
+          status: 401
+          message: Unauthorized
+          error: 
+            productExist: true
+            msg: Product already exists
+      RolePrivileges:
+        type: object
+        properties:
+          status:
+            type: number
+            description: Código de estado de la petición
+          message:
+            type: string
+            description: Estado de la petición
+          data:
+            type: string
+            description: Message Role privileges
+        example:
+          status: 403
+          message: Forbidden
+          error: This endpoint is only for users with role 'admin' or 'premium'
+    Carts:
+      Cart:
+        type: object
+        properties:
+          products:
+            type: array
+            description: Array de productos
+            quantity:
+              type: number
+              description: Cantidad del producto
+            product:
+              type: string
+              description: Id del producto
+        example:
+          products: 
+            quantity: 2
+            product: 66cfabf91cfadd37f5025104
+      GetAllCarts:
+        type: array
+        items:
+          properties:    
+            id:
+              type: string
+              description: ID del producto
+            products:
+              type: array
+              description: array de productos
+              quantity:
+                type: number
+                description: cantidad del producto
+              product:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ID del producto
+                  title:
+                    type: string
+                    description: Título del producto
+                  description:
+                    type: string
+                    description: Descripción del producto
+                  code:
+                    type: string
+                    description: Código del producto
+                  price:
+                    type: number
+                    description: Precio del producto
+                  status:
+                    type: boolean
+                    description: Estado del producto
+                  stock:
+                    type: number
+                    description: Cantidad en stock del producto
+                  category:
+                    type: string
+                    description: Categoría del producto
+                  thumbnails:
+                    type: array
+                    description: Imágenes del producto
+                  owner:
+                    type: string
+                    description: Usuario que creó el producto
+        example:
+            id: 66cfabf91cfadd37f5025104
+            products: 
+              quantity: 3
+              product: 
+                id: 66d2642c0e923c1f68369e8b
+                title": Heladera Whirlpool WRM5602 c/Freezer 462L
+                description: Heladera inverter no frost Whirlpool WRM56D2 blanca con freezer 462L 220V
+                code: HWH5602
+                price: 1801
+                status: false
+                stock: 1
+                category: Helad-Freezer
+                thumbnails: [HWH5602_01.jpg, HWH5602_02.jpg]
+                owner": admin
+      CartNotFound:
+        type: object
+        properties:
+          status:
+            type: number
+            description: Código de estado de la petición
+          message:
+            type: string
+            description: Estado de la petición
+          data:
+            type: string
+            description: Cart Not Found
+        example:
+          status: 404
+          message: Not Found
+          error: null
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error del servidor  
+      example:
+        status: 500
+        message: Internal Server Error
+
+

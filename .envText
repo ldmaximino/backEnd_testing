@@ -1,0 +1,14 @@
+PORT=5002
+SECRET_KEY=
+URI_MONGODB=
+URI_MONGODB_LOCAL="mongodb://127.0.0.1/ecommerce"
+CLIENT_ID = 
+CLIENT_SECRET = 
+CALLBACKURL = 'http://localhost:5002/users/login-github'
+TIMETOKEN = 5
+USERADMIN="admincoder@coder.com"
+KEYUSERADMIN="adminCod3r123"
+ENVIRONMENT=DEV
+#ENVIRONMENT=PROD
+EMAILSEND = 'Aca va el mail desde el que se envía el reseteo de la clave. Ej. leandro@gmail.com'
+PASSEMAILSEND = 'acá va la contraseña de aplicación. Ej. de gmail'
