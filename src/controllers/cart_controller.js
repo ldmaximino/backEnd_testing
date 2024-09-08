@@ -153,4 +153,13 @@ export default class CartController extends Controllers {
       next(error);
     }
   }
+
+  async deleteAllCarts(req, res, next) {
+    try {
+      const cartsDelete = await cartService.deleteAllCarts();
+      return httpResponse.Ok(res, cartsDelete);
+    } catch (error) {
+      next(error);
+    }
+  }
 }

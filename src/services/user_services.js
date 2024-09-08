@@ -134,4 +134,14 @@ export default class UserService extends Services {
       throw new Error(error);
     }
   }
+
+  async deleteAllUsers() {
+    try {
+      const usersDelete = this.dao.deleteAllUsers();
+      console.log(usersDelete);
+      return await this.dao.deleteAllUsers();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

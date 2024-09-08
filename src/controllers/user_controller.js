@@ -103,4 +103,13 @@ export default class UserController extends Controllers {
       next(error);
     }
   }
+
+  async deleteAllUsers(req, res, next) {
+    try {
+      const usersDelete = await userService.deleteAllUsers();
+      return httpResponse.Ok(res, usersDelete);
+    } catch (error) {
+      next(error);
+    }
+  }
 }

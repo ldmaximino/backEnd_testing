@@ -70,4 +70,12 @@ export default class CartServices extends Services {
       throw new Error(error);
     }
   }
+
+  async deleteAllCarts() {
+    try {
+      return await this.dao.deleteAllCarts();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

@@ -43,4 +43,10 @@ router.delete(
   controller.delete
 );
 
+//delete all products - This endpoint doesn't use middleware because it is used inside test.js within the before sentence.
+router.delete(
+  "/",
+  controller.deleteAllProducts
+);
+
 export default router;

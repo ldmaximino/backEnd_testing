@@ -112,4 +112,12 @@ export default class CartDaoMongoDB extends MongoDao {
       throw new Error(error);
     }
   }
+
+  async deleteAllCarts() {
+    try {
+      return await this.model.deleteMany();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

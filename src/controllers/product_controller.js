@@ -56,4 +56,13 @@ export default class ProductController extends Controllers {
       next(error);
     }
   }
+
+  async deleteAllProducts(req, res, next) {
+    try {
+      const productsDelete = await productService.deleteAllProducts();
+      return httpResponse.Ok(res, productsDelete);
+    } catch (error) {
+      next(error);
+    }
+  }
 }

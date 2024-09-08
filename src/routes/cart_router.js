@@ -58,4 +58,9 @@ router.delete(
   controller.deleteAllProductsFromCart
 );
 
+router.delete(
+  "/allcarts",
+  controller.deleteAllCarts
+);
+
 export default router;

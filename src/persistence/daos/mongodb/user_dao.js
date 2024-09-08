@@ -41,4 +41,12 @@ export default class UserDaoMongo extends MongoDao {
       throw new Error(error);
     }
   }
+
+  async deleteAllUsers() {
+    try {
+      return await this.model.deleteMany();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

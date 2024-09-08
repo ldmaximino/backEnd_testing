@@ -45,4 +45,12 @@ export default class ProductDaoMongoDB extends MongoDao {
       throw new Error(error);
     }
   }
+
+  async deleteAllProducts() {
+    try {
+      return await this.model.deleteMany();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

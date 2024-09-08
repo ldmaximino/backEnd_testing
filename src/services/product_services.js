@@ -28,6 +28,14 @@ export default class ProductService extends Services {
     }
   }
 
+  async deleteAllProducts() {
+    try {
+      return await this.dao.deleteAllProducts();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   //Mocking Product
   async createProductMock(cant = 10) {
     try {

@@ -59,6 +59,12 @@ router.get(
   })
 );
 
+//delete all users - This endpoint doesn't use middleware because it is used inside test.js within the before sentence.
+router.delete(
+  "/",
+  controller.deleteAllUsers
+);
+
 //Send Email to reset user password
 router.post("/reset-pass", passport.authenticate('current'), controller.generateNewPass);
 
