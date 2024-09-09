@@ -15,7 +15,7 @@ const userRegister = () => {
     last_name: "Maximino",
     email: "leandro@gmail.com",
     password: "a1234",
-    role: "premium",
+    role: "admin",
   };
 };
 
